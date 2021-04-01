@@ -63,65 +63,81 @@ const ManageProduct = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12">
-                            <table className="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col" className="text-center">
-                                            Weight
-                                        </th>
-                                        <th scope="col" className="text-center">
-                                            Price
-                                        </th>
-                                        <th scope="col" className="text-end">
-                                            Action
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {allProducts.map((products) => (
-                                        <tr key={products._id}>
-                                            <td>{products.product}</td>
-                                            <td className="text-center">
-                                                {products.weight}
-                                            </td>
-                                            <td className="text-center">
-                                                ${products.price}
-                                            </td>
-                                            <td className="text-end">
-                                                <span
-                                                    style={{
-                                                        backgroundColor:
-                                                            "#3bc83b",
-                                                    }}
-                                                    className="icon"
-                                                >
-                                                    <FontAwesomeIcon
-                                                        icon={faPen}
-                                                    />
-                                                </span>
-                                                <span
-                                                    style={{
-                                                        backgroundColor:
-                                                            "#FF444A",
-                                                        cursor: "pointer",
-                                                    }}
-                                                    className="icon"
-                                                    onClick={() =>
-                                                        deleteProduct(
-                                                            `${products._id}`
-                                                        )
-                                                    }
-                                                >
-                                                    <FontAwesomeIcon
-                                                        icon={faTrash}
-                                                    />
-                                                </span>
-                                            </td>
+                            {allProducts.length === 0 ? (
+                                <div
+                                    className="spinner-border text-success mx-auto"
+                                    role="status"
+                                ></div>
+                            ) : (
+                                <table className="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Product Name</th>
+                                            <th
+                                                scope="col"
+                                                className="text-center"
+                                            >
+                                                Weight
+                                            </th>
+                                            <th
+                                                scope="col"
+                                                className="text-center"
+                                            >
+                                                Price
+                                            </th>
+                                            <th
+                                                scope="col"
+                                                className="text-end"
+                                            >
+                                                Action
+                                            </th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {allProducts.map((products) => (
+                                            <tr key={products._id}>
+                                                <td>{products.product}</td>
+                                                <td className="text-center">
+                                                    {products.weight}
+                                                </td>
+                                                <td className="text-center">
+                                                    ${products.price}
+                                                </td>
+                                                <td className="text-end">
+                                                    <span
+                                                        style={{
+                                                            backgroundColor:
+                                                                "#3bc83b",
+                                                        }}
+                                                        className="icon"
+                                                    >
+                                                        <FontAwesomeIcon
+                                                            icon={faPen}
+                                                        />
+                                                    </span>
+                                                    <span
+                                                        style={{
+                                                            backgroundColor:
+                                                                "#FF444A",
+                                                            cursor: "pointer",
+                                                        }}
+                                                        className="icon"
+                                                        onClick={() =>
+                                                            deleteProduct(
+                                                                `${products._id}`
+                                                            )
+                                                        }
+                                                    >
+                                                        <FontAwesomeIcon
+                                                            icon={faTrash}
+                                                        />
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            )}
                         </div>
                     </div>
                 </div>

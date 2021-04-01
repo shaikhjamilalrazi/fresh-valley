@@ -11,12 +11,17 @@ const CardContainer = () => {
             .then((data) => setAllProducts(data));
     }, []);
 
-    console.log(allProducts);
-
     return (
         <div className="container">
             <div className="row">
                 <div className="card-content">
+                    {allProducts.length === 0 && (
+                        <div
+                            className="spinner-border text-success mx-auto"
+                            role="status"
+                        ></div>
+                    )}
+
                     {allProducts?.map((products) => (
                         <Card key={products._id} products={products} />
                     ))}
