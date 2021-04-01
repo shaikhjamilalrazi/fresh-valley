@@ -1,0 +1,15 @@
+.navbar-light .navbar-nav .nav-link {
+    color: #383838;
+}
+
+.nav-link:hover {
+    background-color: #71ba58;
+    color: #ffffff !important;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    background-color: #71ba58;
+    color: #ffffff !important;
+    border-radius: 5px;
+}
