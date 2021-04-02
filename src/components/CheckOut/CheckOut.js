@@ -7,7 +7,7 @@ const CheckOut = () => {
     const [product, setProduct] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/Product/${id}`;
+        const url = `https://rhubarb-pudding-99273.herokuapp.com/Product/${id}`;
         fetch(url)
             .then((res) => res.json())
             .then((data) => setProduct(data));
