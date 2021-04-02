@@ -20,49 +20,47 @@ export const userContext = createContext();
 function App() {
     const [loggedInUser, setLoggedInUser] = useState({});
     return (
-        <>
-            <userContext.Provider value={[loggedInUser, setLoggedInUser]}>
-                <Router>
-                    <Switch>
-                        <PrivateRoute path="/AddProduct">
-                            <AddProduct />
-                        </PrivateRoute>
-                        <PrivateRoute path="/EditProduct">
-                            <EditProduct />
-                        </PrivateRoute>
-                        <PrivateRoute path="/ManageProduct">
-                            <ManageProduct />
-                        </PrivateRoute>
-                        <PrivateRoute path="/Admin">
-                            <Admin />
-                        </PrivateRoute>
-                        <PrivateRoute path="/Orders">
-                            <Header />
-                            <Orders />
-                        </PrivateRoute>
-                        <PrivateRoute path="/CheckOut">
-                            <Header />
-                            <CheckOut />
-                        </PrivateRoute>
-                        <Route path="/LoginAndSignUp">
-                            <Header />
-                            <LoginAndSignUp />
-                        </Route>
-                        <Route path="/Home">
-                            <Header />
-                            <Home />
-                        </Route>
-                        <Route exact path="/">
-                            <Header />
-                            <Home />
-                        </Route>
-                        <Route path="*">
-                            <NoMatch />
-                        </Route>
-                    </Switch>
-                </Router>
-            </userContext.Provider>
-        </>
+        <userContext.Provider value={[loggedInUser, setLoggedInUser]}>
+            <Router>
+                <Switch>
+                    <PrivateRoute path="/AddProduct">
+                        <AddProduct />
+                    </PrivateRoute>
+                    <PrivateRoute path="/EditProduct">
+                        <EditProduct />
+                    </PrivateRoute>
+                    <PrivateRoute path="/ManageProduct">
+                        <ManageProduct />
+                    </PrivateRoute>
+                    <PrivateRoute path="/Admin">
+                        <Admin />
+                    </PrivateRoute>
+                    <PrivateRoute path="/Orders">
+                        <Header />
+                        <Orders />
+                    </PrivateRoute>
+                    <PrivateRoute path="/CheckOut/:id">
+                        <Header />
+                        <CheckOut />
+                    </PrivateRoute>
+                    <Route path="/LoginAndSignUp">
+                        <Header />
+                        <LoginAndSignUp />
+                    </Route>
+                    <Route path="/Home">
+                        <Header />
+                        <Home />
+                    </Route>
+                    <Route exact path="/">
+                        <Header />
+                        <Home />
+                    </Route>
+                    <Route path="*">
+                        <NoMatch />
+                    </Route>
+                </Switch>
+            </Router>
+        </userContext.Provider>
     );
 }
 

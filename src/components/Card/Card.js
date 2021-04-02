@@ -1,8 +1,16 @@
 import React from "react";
+import { useHistory } from "react-router";
 import "./Card.css";
 
 const Card = ({ products }) => {
-    const { imageURL, product, price, weight } = products;
+    const { _id, imageURL, product, price, weight } = products;
+
+    const history = useHistory();
+
+    const checkOut = (id) => {
+        const url = `/CheckOut/${id}`;
+        history.push(url);
+    };
 
     return (
         <div className="box-item mx-auto shadow mb-5">
@@ -19,7 +27,11 @@ const Card = ({ products }) => {
                     <h2>${price}</h2>
                 </div>
                 <div className="select-product">
-                    <button type="button" className="btn btn-danger card-btn">
+                    <button
+                        type="button"
+                        onClick={() => checkOut(_id)}
+                        className="btn btn-danger card-btn"
+                    >
                         Buy Now
                     </button>
                 </div>

@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 const CheckOut = () => {
+    const { id } = useParams();
+
+    const [product, setProduct] = useState([]);
+
+    useEffect(() => {
+        const url = `http://localhost:5000/Product/${id}`;
+        fetch(url)
+            .then((res) => res.json())
+            .then((data) => setProduct(data));
+    }, [id]);
+
+    console.log(product);
+
     return (
         <div className="container">
             <div className="row mt-5">
@@ -18,24 +32,19 @@ const CheckOut = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Marks Full Cream Milk Powder Foil</td>
+                                <td>{product.product}</td>
                                 <td className="text-center">1</td>
-                                <td>$255</td>
+                                <td>${product.price}</td>
                             </tr>
                             <tr>
-                                <td>Marks Full Cream Milk Powder Foil</td>
-                                <td className="text-center">1</td>
-                                <td>$255</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">Total</td>
-                                <td>$510</td>
+                                <td colSpan="2">Total</td>
+                                <td>${product.price}</td>
                             </tr>
                         </tbody>
                     </table>
                     <button
                         type="button"
-                        class="btn btn-danger btn-lg mt-3 float-end"
+                        className="btn btn-danger btn-lg mt-3 float-end"
                     >
                         Checkout
                     </button>
