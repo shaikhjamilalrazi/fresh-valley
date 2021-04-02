@@ -43,6 +43,10 @@ function App() {
                         <Header />
                         <CheckOut />
                     </PrivateRoute>
+                    <PrivateRoute path="/CheckOut">
+                        <Header />
+                        <CheckOut />
+                    </PrivateRoute>
                     <Route path="/LoginAndSignUp">
                         <Header />
                         <LoginAndSignUp />
