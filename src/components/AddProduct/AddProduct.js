@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 
 const AddProduct = () => {
     const { register, handleSubmit, watch, errors } = useForm();
-    const [imageURL, setIMageURL] = useState(null);
+    const [imageURL, setIMageURL] = useState("");
 
     const onSubmit = (data) => {
         const eventData = {
@@ -18,8 +18,6 @@ const AddProduct = () => {
             imageURL: imageURL,
         };
         const url = `https://rhubarb-pudding-99273.herokuapp.com/addProduct`;
-
-        // http://localhost:5000
 
         fetch(url, {
             method: "POST",
