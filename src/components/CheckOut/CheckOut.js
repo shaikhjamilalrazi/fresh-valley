@@ -7,6 +7,8 @@ const CheckOut = () => {
 
     const [product, setProduct] = useState([]);
 
+    const date = new Date();
+
     const [loggedInUser, setLoggedInUser] = useContext(userContext);
 
     const history = useHistory();
@@ -24,7 +26,7 @@ const CheckOut = () => {
     }, [id]);
 
     const submitCheckOut = () => {
-        const orderDetail = { ...loggedInUser, ...product };
+        const orderDetail = { ...loggedInUser, ...product, date };
 
         fetch("https://rhubarb-pudding-99273.herokuapp.com/placeOrder", {
             method: "POST",

@@ -60,25 +60,26 @@ const LoginAndSignUp = () => {
             });
     };
 
-    // const hanbleSignInFacebook = () => {
-    //     const facebookProvider = new firebase.auth.FacebookAuthProvider();
-    //     firebase
-    //         .auth()
-    //         .signInWithPopup(facebookProvider)
-    //         .then((result) => {
-    //             const { displayName, email } = result.user;
-    //             const signedInUser = {
-    //                 name: displayName,
-    //                 email: email,
-    //             };
-    //             setUser(signedInUser);
-    //             handleResponse(signedInUser, true);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //             console.log(error.message);
-    //         });
-    // };
+    const hanbleSignInFacebook = () => {
+        const facebookProvider = new firebase.auth.FacebookAuthProvider();
+        firebase
+            .auth()
+            .signInWithPopup(facebookProvider)
+            .then((result) => {
+                const { displayName, email, photoURL } = result.user;
+                const signedInUser = {
+                    name: displayName,
+                    email: email,
+                    photo: photoURL,
+                };
+                setUser(signedInUser);
+                handleResponse(signedInUser, true);
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log(error.message);
+            });
+    };
 
     return (
         <div className="container">
@@ -152,7 +153,10 @@ const LoginAndSignUp = () => {
                     <h4 className="pt-4 mx-auto">
                         <span>Or</span>
                     </h4>
-                    <div className="social-login mx-auto d-flex">
+                    <div
+                        onClick={hanbleSignInFacebook}
+                        className="social-login mx-auto d-flex"
+                    >
                         <div className="logo">
                             <img src={facebook} alt="" />
                         </div>
